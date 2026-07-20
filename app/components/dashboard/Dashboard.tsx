@@ -1,16 +1,17 @@
 "use client";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ColorPalette } from "./ColorPalette";
 import { useColor } from "@hooks/useColor";
 import { useFileStore } from "@store/file.store";
 import { ColorPorcentage } from "./ColorPorcentage";
+import { CardColor } from "./CardColor";
 export const Dashboard = () => {
     const { file, type } = useFileStore();
     const { colors, countColors, handleImage } = useColor();
     const [ color, setColor ] = useState<string>("");
     useEffect(() => {
         if (file) {
-            console.log("File changed:", file);
             handleImage(file, type);
         }
     }, [file, type]);
@@ -24,14 +25,31 @@ export const Dashboard = () => {
                 }
             </span>
         </div>
-        <ColorPalette 
-            colors={colors.map(colorData => colorData.color)}
-            onClick={(color) => setColor(color)}
-        />
-        <div className="flex flex-col md:flex-row mt-4">
-            <ColorPorcentage 
-                colors={colors}
+        {
+            file && colors.length > 0 ?
+            <>
+                <ColorPalette 
+                    colors={colors.map(colorData => colorData.color)}
+                    onClick={(color) => setColor(color)}
+                />
+                <div className="flex flex-col md:flex-row gap-4 mt-4">
+                    <CardColor
+                        color={color}
+                    />
+                    <ColorPorcentage
+                        colors={colors}
+                    />
+                </div>
+            </>
+            :
+            
+            <Image 
+                src={`picture.svg`}
+                alt="Globe"
+                width={300}
+                height={300}
+                className="mx-auto mt-20"
             />
-        </div>
+        }
     </section>)
 }

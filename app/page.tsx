@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import { NavBar } from "@components/navBar/NavBar";
 import { SideBar } from "@components/sideBar/SideBar";
 import { Dashboard } from "@components/dashboard/Dashboard";
