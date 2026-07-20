@@ -22,6 +22,10 @@
       "@/*": ["./*"],
       "@components/*": ["./app/components/*"],
       "@shared/*": ["./app/shared/*"],
+      "@hooks/*": ["./app/hooks/*"],
+      "@store/*": ["./app/store/*"],
+      "@services/*": ["./app/services/*"],
+      "@domain/*": ["./app/domain/*"]
 
     }
   },
