@@ -42,7 +42,7 @@ export const SideBar = () => {
       
         <ProgressBar 
             label={"N.° de colores"}
-            porcentage={75}
+            porcentage={ 10 }
         />
         <span  className="text-xs">
             Método
